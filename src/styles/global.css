@@ -51,12 +51,12 @@
 
 @keyframes slide-in {
   from {
-    width: 0;
+    transform: translateX(-50%) scaleX(0);
     opacity: 0;
   }
 
   to {
-    width: 80px;
+    transform: translateX(-50%) scaleX(1);
     opacity: 1;
   }
 }
@@ -104,10 +104,10 @@ p {
   background: linear-gradient(90deg, var(--color-primary-red), var(--color-light-red));
   bottom: -12px;
   left: 50%;
-  transform: translateX(-50%);
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(230, 57, 70, 0.4);
   animation: slide-in 0.6s ease-out both;
+  transform-origin: center;
 }
 
 /* ===== Performance: lazy render off-screen sections ===== */
