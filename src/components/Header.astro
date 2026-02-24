@@ -1,0 +1,127 @@
+---
+const navLinks = [
+    { href: "#inicio", label: "Inicio" },
+    { href: "#galeria", label: "Galería" },
+    { href: "#ventajas", label: "Ventajas" },
+    { href: "#ubicacion", label: "Ubicación" },
+    { href: "#contacto", label: "Contacto" },
+];
+---
+
+<header
+    id="header"
+    class="fixed top-0 left-0 w-full z-50 bg-white/[0.98] backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300"
+>
+    <div
+        class="max-w-7xl mx-auto px-5 flex justify-between items-center py-3.5 md:py-4"
+    >
+        <a
+            href="#"
+            class="text-2xl md:text-3xl font-bold text-primary-red no-underline"
+            aria-label="Residencia Gabys - Inicio"
+        >
+            Residencia <span class="text-dark-gray">Gabys</span>
+        </a>
+
+        <button
+            class="md:hidden bg-transparent border-none text-2xl text-primary-red cursor-pointer p-2.5 focus:outline-2 focus:outline-primary-red focus:outline-offset-2"
+            id="navToggle"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+        >
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <nav aria-label="Navegación principal">
+            <ul
+                class="nav-menu hidden md:flex gap-6 lg:gap-8 list-none
+               max-md:fixed max-md:top-[60px] max-md:left-0 max-md:w-full max-md:bg-white max-md:flex-col max-md:items-center max-md:py-5 max-md:shadow-lg max-md:-translate-y-full max-md:opacity-0 max-md:transition-all max-md:duration-300 max-md:z-[999]"
+                id="navMenu"
+                role="list"
+            >
+                {
+                    navLinks.map((link) => (
+                        <li class="max-md:w-full max-md:text-center max-md:py-3">
+                            <a
+                                href={link.href}
+                                class="nav-link font-medium text-dark-gray transition-colors duration-300 no-underline"
+                            >
+                                {link.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<script>
+    // Mobile menu toggle
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    navToggle?.addEventListener("click", () => {
+        const isExpanded =
+            navMenu?.classList.toggle("max-md:translate-y-0") ?? false;
+        navMenu?.classList.toggle("max-md:-translate-y-full");
+        navMenu?.classList.toggle("max-md:opacity-0");
+        navMenu?.classList.toggle("max-md:opacity-100");
+        navMenu?.classList.toggle("hidden", false);
+        navToggle.setAttribute("aria-expanded", String(isExpanded));
+        navToggle.setAttribute(
+            "aria-label",
+            isExpanded
+                ? "Cerrar menú de navegación"
+                : "Abrir menú de navegación",
+        );
+        navToggle.innerHTML = isExpanded
+            ? '<i class="fas fa-times" aria-hidden="true"></i>'
+            : '<i class="fas fa-bars" aria-hidden="true"></i>';
+    });
+
+    // Close menu on link click
+    document.querySelectorAll("#navMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+            navMenu?.classList.add(
+                "max-md:-translate-y-full",
+                "max-md:opacity-0",
+            );
+            navMenu?.classList.remove(
+                "max-md:translate-y-0",
+                "max-md:opacity-100",
+            );
+            navToggle?.setAttribute("aria-expanded", "false");
+            navToggle?.setAttribute("aria-label", "Abrir menú de navegación");
+            if (navToggle)
+                navToggle.innerHTML =
+                    '<i class="fas fa-bars" aria-hidden="true"></i>';
+        });
+    });
+
+    // Header scroll effect
+    window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 100) {
+            header?.classList.add("scrolled");
+        } else {
+            header?.classList.remove("scrolled");
+        }
+    });
+
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = (this as HTMLAnchorElement).getAttribute("href");
+            if (targetId === "#") return;
+            const targetElement = document.querySelector(targetId!);
+            if (targetElement) {
+                window.scrollTo({
+                    top: (targetElement as HTMLElement).offsetTop - 80,
+                    behavior: "smooth",
+                });
+            }
+        });
+    });
+</script>

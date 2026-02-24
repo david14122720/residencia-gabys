@@ -1,0 +1,193 @@
+---
+// Contact Section
+---
+
+<section
+    class="py-20 md:py-28"
+    id="contacto"
+    aria-labelledby="contacto-heading"
+>
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14 md:mb-18">
+            <h2
+                id="contacto-heading"
+                class="section-title text-4xl md:text-5xl font-bold text-primary-red mb-8 tracking-tight"
+            >
+                Contáctanos
+            </h2>
+            <p
+                class="max-w-3xl mx-auto text-dark-gray text-lg md:text-xl leading-relaxed"
+            >
+                Contáctanos para reservar o para cualquier consulta sobre tu
+                estadía
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+            <!-- Contact Info -->
+            <aside
+                class="flex flex-col gap-9"
+                aria-label="Información de contacto"
+            >
+                <div class="contact-method flex items-center gap-5 group">
+                    <div
+                        class="contact-icon-circle group-hover:scale-110 transition-transform duration-300"
+                    >
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h3
+                            class="text-xl md:text-2xl font-bold text-dark-red mb-1"
+                        >
+                            Teléfono
+                        </h3>
+                        <p
+                            class="text-dark-gray text-lg md:text-xl font-bold tracking-wide"
+                        >
+                            +57 3173466947
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-method flex items-center gap-5 group">
+                    <div
+                        class="contact-icon-circle group-hover:scale-110 transition-transform duration-300"
+                    >
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <h3
+                            class="text-xl md:text-2xl font-bold text-dark-red mb-1"
+                        >
+                            WhatsApp
+                        </h3>
+                        <p
+                            class="text-dark-gray text-lg md:text-xl font-bold tracking-wide"
+                        >
+                            +57 3024892236
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-4 mt-6">
+                    <a
+                        href="https://wa.me/573024892236?text=Hola,%20me%20interesa%20hacer%20una%20reserva%20en%20Residencia%20Gabys"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-whatsapp w-full text-xl py-5"
+                        aria-label="Contactar por WhatsApp para hacer una reserva"
+                    >
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Contactar
+                        por WhatsApp
+                    </a>
+                    <a
+                        href="tel:+573173466947"
+                        class="btn w-full text-xl py-5"
+                        aria-label="Llamar al teléfono de Residencia Gabys"
+                    >
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i> Llamar
+                        Ahora
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Additional Info -->
+            <div
+                class="bg-light-gray rounded-3xl p-8 md:p-12 shadow-inner border border-medium-gray/20"
+            >
+                <h3 class="text-2xl md:text-3xl font-bold text-dark-red mb-6">
+                    Información de Pago
+                </h3>
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <i
+                            class="fas fa-money-bill-wave text-primary-red mt-1 text-2xl"
+                        ></i>
+                        <div class="flex-1">
+                            <p
+                                class="text-dark-gray text-base md:text-lg mb-4 font-medium leading-relaxed"
+                            >
+                                Aceptamos transferencias bancarias <strong
+                                    >Nequi</strong
+                                > para tu comodidad:
+                            </p>
+                            <div
+                                class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-white rounded-2xl p-4 shadow-sm border border-medium-gray/40"
+                            >
+                                <div class="flex items-center gap-3 flex-1">
+                                    <i
+                                        class="fas fa-mobile-alt text-2xl text-primary-red"
+                                    ></i>
+                                    <span
+                                        id="nequiNumber"
+                                        class="font-bold text-text text-xl md:text-2xl tracking-widest"
+                                    >
+                                        3155002253
+                                    </span>
+                                </div>
+                                <button
+                                    id="copyNequiBtn"
+                                    class="flex items-center justify-center gap-2 bg-primary-red hover:bg-dark-red text-white text-base font-bold px-6 py-4 rounded-xl transition-all duration-300 active:scale-95 cursor-pointer border-none shadow-md"
+                                    aria-label="Copiar número Nequi"
+                                    type="button"
+                                >
+                                    <i class="fas fa-copy" aria-hidden="true"
+                                    ></i>
+                                    <span id="copyBtnText">Copiar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const copyBtn = document.getElementById("copyNequiBtn");
+    const copyText = document.getElementById("copyBtnText");
+    const nequiNumber = document.getElementById("nequiNumber");
+
+    copyBtn?.addEventListener("click", async () => {
+        const number = nequiNumber?.textContent?.trim() ?? "";
+        try {
+            await navigator.clipboard.writeText(number);
+            if (copyText) copyText.textContent = "¡Copiado!";
+            copyBtn.classList.replace("bg-primary-red", "bg-green-600");
+            copyBtn.classList.replace(
+                "hover:bg-dark-red",
+                "hover:bg-green-700",
+            );
+            const icon = copyBtn.querySelector("i");
+            if (icon) {
+                icon.classList.replace("fa-copy", "fa-check");
+            }
+            setTimeout(() => {
+                if (copyText) copyText.textContent = "Copiar";
+                copyBtn.classList.replace("bg-green-600", "bg-primary-red");
+                copyBtn.classList.replace(
+                    "hover:bg-green-700",
+                    "hover:bg-dark-red",
+                );
+                if (icon) {
+                    icon.classList.replace("fa-check", "fa-copy");
+                }
+            }, 2000);
+        } catch {
+            // Fallback for older browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = number;
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            if (copyText) copyText.textContent = "¡Copiado!";
+            setTimeout(() => {
+                if (copyText) copyText.textContent = "Copiar";
+            }, 2000);
+        }
+    });
+</script>

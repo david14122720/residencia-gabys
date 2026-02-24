@@ -1,0 +1,40 @@
+---
+// Hero section - Mobile first, optimized
+---
+
+<section
+    class="relative min-h-screen flex items-center text-white text-center pt-20 overflow-hidden"
+    id="inicio"
+    style="background: linear-gradient(135deg, rgba(230, 57, 70, 0.75) 0%, rgba(193, 18, 31, 0.85) 100%), url('/img2.webp') center/cover no-repeat scroll;"
+>
+    <!-- Glow overlay -->
+    <div
+        class="absolute inset-0 animate-pulse-glow pointer-events-none"
+        style="background: radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);"
+    >
+    </div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-6 w-full">
+        <h1
+            class="text-[2.5rem] md:text-5xl lg:text-6xl font-bold mb-5 animate-fade-in-up font-heading tracking-wide drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+        >
+            Residencia Gabys
+        </h1>
+        <p class="text-xl md:text-2xl mb-9 opacity-95 leading-relaxed">
+            Comodidad, tranquilidad y excelente ubicación para tu estadía
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5">
+            <a
+                href="https://wa.me/573024892236?text=Hola,%20me%20interesa%20hacer%20una%20reserva%20en%20Residencia%20Gabys"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp w-full sm:w-auto text-base"
+            >
+                <i class="fab fa-whatsapp"></i> Reservar por WhatsApp
+            </a>
+            <a href="#ubicacion" class="btn w-full sm:w-auto text-base">
+                Cómo llegar
+            </a>
+        </div>
+    </div>
+</section>

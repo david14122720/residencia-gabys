@@ -1,0 +1,101 @@
+---
+const advantages = [
+    {
+        icon: "fas fa-bed",
+        title: "Habitaciones Cómodas",
+        description:
+            "Camas confortables, espacio suficiente para descansar después de un largo día.",
+    },
+    {
+        icon: "fas fa-wifi",
+        title: "Wi-Fi Gratuito",
+        description:
+            "Conexión a internet rápida y estable en todas las áreas de la residencia para que te mantengas conectado.",
+    },
+    {
+        icon: "fas fa-broom",
+        title: "Limpieza Diaria",
+        description:
+            "Nuestras instalaciones se mantienen impecables con limpieza diaria para tu comodidad y seguridad.",
+    },
+    {
+        icon: "fas fa-shield-alt",
+        title: "Seguridad 24/7",
+        description:
+            "Nos preocupamos por tu seguridad con vigilancia y medidas de protección durante toda tu estadía.",
+    },
+    {
+        icon: "fas fa-bath",
+        title: "Baño Privado",
+        description:
+            "Todas nuestras habitaciones cuentan con baño privado para tu comodidad y privacidad.",
+    },
+    {
+        icon: "fas fa-tv",
+        title: "TV",
+        description:
+            "Disfruta de entretenimiento con televisión en cada habitación.",
+    },
+    {
+        icon: "fas fa-fire",
+        title: "Agua Caliente 24h",
+        description:
+            "Agua caliente disponible las 24 horas del día para tu máxima comodidad.",
+    },
+    {
+        icon: "fas fa-motorcycle",
+        title: "Parqueadero (Motos)",
+        description: "Contamos con parqueadero privado y seguro para motos.",
+    },
+];
+---
+
+<section
+    class="py-20 md:py-28"
+    id="ventajas"
+    aria-labelledby="ventajas-heading"
+>
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14 md:mb-18">
+            <h2
+                id="ventajas-heading"
+                class="section-title text-4xl md:text-5xl font-bold text-primary-red mb-8 tracking-tight"
+            >
+                Residencia Gabys
+            </h2>
+            <p
+                class="max-w-3xl mx-auto text-dark-gray text-lg md:text-xl leading-relaxed"
+            >
+                Ofrecemos todo lo necesario para que tu estadía sea cómoda,
+                segura y placentera
+            </p>
+        </div>
+
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            role="list"
+        >
+            {
+                advantages.map((adv) => (
+                    <article
+                        class="advantage-card rounded-2xl p-8 md:p-10 text-center shadow-lg border border-medium-gray/30 hover:shadow-xl transition-all duration-300"
+                        role="listitem"
+                    >
+                        <div
+                            class="advantage-icon text-5xl md:text-6xl mb-6 drop-shadow-sm"
+                            aria-hidden="true"
+                        >
+                            <i class={adv.icon} />
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-dark-red mb-3">
+                            {adv.title}
+                        </h3>
+                        <p class="text-base md:text-lg text-dark-gray leading-relaxed font-medium">
+                            {adv.description}
+                        </p>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</section>

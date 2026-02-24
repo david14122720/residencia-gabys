@@ -1,0 +1,147 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Residencia Gabys - Hotel y Motel en Guaitarilla, Nariño | Alojamiento Cómodo y Económico",
+  description = "Residencia Gabys ofrece habitaciones cómodas con WiFi gratis, agua caliente 24h, baño privado y TV en Guaitarilla, Nariño. Reserva ahora por WhatsApp. Parqueadero disponible.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="hotel guaitarilla, residencia nariño, alojamiento guaitarilla, motel nariño, habitaciones guaitarilla, hospedaje colombia, hotel económico nariño"
+    />
+    <meta name="author" content="Residencia Gabys" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="geo.region" content="CO-NAR" />
+    <meta name="geo.placename" content="Guaitarilla, Nariño" />
+    <meta name="geo.position" content="1.133114;-77.554236" />
+    <meta name="ICBM" content="1.133114, -77.554236" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.residenciagabys.com/" />
+    <meta
+      property="og:title"
+      content="Residencia Gabys - Hotel y Motel en Guaitarilla, Nariño"
+    />
+    <meta
+      property="og:description"
+      content="Alojamiento cómodo y económico en Guaitarilla. WiFi gratis, agua caliente 24h, baño privado, TV y parqueadero."
+    />
+    <meta property="og:image" content="/img2.webp" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Residencia Gabys" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Residencia Gabys - Hotel y Motel en Guaitarilla"
+    />
+    <meta
+      name="twitter:description"
+      content="Habitaciones cómodas con WiFi gratis, agua caliente 24h y baño privado en Guaitarilla, Nariño."
+    />
+    <meta name="twitter:image" content="/img2.webp" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.residenciagabys.com/" />
+
+    <!-- Preload Critical Hero Image -->
+    <link rel="preload" as="image" href="/img2.webp" fetchpriority="high" />
+
+    <!-- Fonts (optimized: fewer weights) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (non-render-blocking) -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      /></noscript
+    >
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Schema.org Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        name: "Residencia Gabys",
+        description:
+          "Hotel y Motel en Guaitarilla, Nariño - Alojamiento cómodo y económico",
+        url: "https://www.residenciagabys.com",
+        telephone: "+573173466947",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Barrio Jose Elias del Hierro",
+          addressLocality: "Guaitarilla",
+          addressRegion: "Nariño",
+          addressCountry: "CO",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 1.133114,
+          longitude: -77.554236,
+        },
+        amenityFeature: [
+          { "@type": "LocationFeatureSpecification", name: "WiFi Gratuito" },
+          {
+            "@type": "LocationFeatureSpecification",
+            name: "Agua Caliente 24h",
+          },
+          { "@type": "LocationFeatureSpecification", name: "Baño Privado" },
+          { "@type": "LocationFeatureSpecification", name: "TV" },
+          { "@type": "LocationFeatureSpecification", name: "Parqueadero" },
+        ],
+        openingHoursSpecification: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          opens: "00:00",
+          closes: "23:59",
+        },
+      })}
+    />
+  </head>
+  <body class="bg-white text-base md:text-[17px]">
+    <slot />
+  </body>
+</html>
